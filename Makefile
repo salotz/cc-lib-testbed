@@ -13,10 +13,27 @@ CC=clang
 # CXX=g++
 # CC=gcc
 
+all: build
+.PHONY: all
 
 ## General Commands
 clean-all: clean clean-release
 .PHONY: clean-all
+
+## QA
+
+validate:
+	find src -name '*.cpp' |  xargs clang-check -p _build
+	# SNIPPET: uncomment when we have headers
+	# find ./src -name '*.h' | xargs clang-check -p _build
+	find ./src -name '*.cpp' | xargs clang-tidy -p _build
+	# find ./src -name '*.h' | xargs clang-tidy -p _build
+.PHONY: validate
+
+format:
+	find ./src -name '*.cpp' | xargs clang-format --style=Mozilla -i
+	# find ./src -name '*.h' | xargs clang-format --style=Mozilla -i
+.PHONY: format
 
 
 ## Debug
