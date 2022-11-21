@@ -1,19 +1,22 @@
+
+// includes only needed when DEBUG mode is on
+#ifdef DEBUG
+
 #include <iostream>
+using namespace std;
+
+#endif // DEBUG
 
 #include "test_bed.h"
-
-using namespace std;
 
 int
 main(int argc, char* argv[])
 {
-#ifdef DEBUG_BUILD
-    printf("DEBUGGING")
-
-
+#ifdef DEBUG
+  cout << "DEBUGGING" << endl;
 #endif // DEBUG_BUILD
 
-    test_bed::test();
+  test_bed::test();
 
-    return 0;
+  return 0;
 }

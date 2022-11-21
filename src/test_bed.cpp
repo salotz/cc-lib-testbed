@@ -2,12 +2,10 @@
 
 using namespace std;
 
-int
-main(int argc, char* argv[])
+namespace test_bed {
+void
+test()
 {
-
-  int a = 3;
   cout << "hello" << endl;
-
-  return 0;
 }
+} // namespace test_bed

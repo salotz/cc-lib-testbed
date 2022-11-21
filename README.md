@@ -31,11 +31,15 @@ make configure
 make build
 ```
 
-To build the release:
+To build and test the release:
 
 ``` sh
 make configure-release
 make build-release
+# check that the installation simulation works properly
+make install-release
+# run a quick test
+make test-release
 ```
 
 ### QA & Formatting
@@ -43,9 +47,7 @@ make build-release
 ``` sh
 make validate
 make format
-
-# TODO
-# make test
+make test
 ```
 
 ## Using the Project
@@ -69,10 +71,10 @@ mkdir -p build
 # See which options you want
 cmake -B -LAH . | grep 'THIS_'
 
-cmake -B build -DCMAKE_BUILD_TYPE=Release -DTHIS_OPTION1=ON .
+cmake -B build --install-prefix <install-prefix-path> -DCMAKE_BUILD_TYPE=Release -DTHIS_OPTION1=ON .
 
 cmake --build build
 
 # If you want to have the files installed into a directory:
-cmake --install <install-dir>
+cmake --install build
 ```

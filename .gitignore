@@ -1,5 +1,7 @@
 _build
 _build_release
+_build_dist
+_install
 
 *.log
 tmp/
