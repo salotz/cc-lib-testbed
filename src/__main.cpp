@@ -1,20 +1,22 @@
+#include "config.h"
 
-// includes only needed when DEBUG mode is on
-#ifdef DEBUG
+// includes only needed when THIS_DEBUG mode is on
+#ifdef THIS_DEBUG
 
 #include <iostream>
 using namespace std;
 
-#endif // DEBUG
+#endif // THIS_DEBUG
+
 
 #include "test_bed.h"
 
 int
 main(int argc, char* argv[])
 {
-#ifdef DEBUG
-  cout << "DEBUGGING" << endl;
-#endif // DEBUG_BUILD
+#ifdef THIS_DEBUG
+  cout << "DEBUGGING:: " << "VERSION: " << TestBed_VERSION_MAJOR << "." << TestBed_VERSION_MINOR << endl;
+#endif // THIS_DEBUG
 
   test_bed::test();
 

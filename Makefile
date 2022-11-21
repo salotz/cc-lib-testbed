@@ -13,6 +13,7 @@ CC=clang
 # CXX=g++
 # CC=gcc
 
+# the default
 all: build
 .PHONY: all
 
@@ -39,6 +40,9 @@ format:
 #
 # By default these commands build in Debug mode since they are meant to be used
 # during the development process. Release builds have specially named commands.
+
+all-debug: clean configure build test
+.PHONY: all-debug
 
 build:
 	cmake --build _build
@@ -69,18 +73,24 @@ clean:
 #
 # Simulation of what installation on the user side would look like when building
 # from source
+#
+
+release: clean-release configure-release build-release install-release test-release
 
 build-release:
 	cmake --build _build_release
 .PHONY: build-release
 
+INSTALL_DIR=$(shell realpath _install)
+
 configure-release:
 	mkdir -p _build_release
+	mkdir -p _install
 	cmake \
 	  -B _build_release \
 	  -S . \
 	  -G Ninja \
-	  --install-prefix $(realpath _install) \
+	  --install-prefix $(INSTALL_DIR) \
 	  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 	  -DBUILD_SHARED_LIBS=ON \
 	  -DCMAKE_BUILD_TYPE=Release
@@ -95,10 +105,10 @@ test-release:
 .PHONY: test
 
 clean-release:
-	rm -rf _build_release
+	rm -rf _build_release _install
 .PHONY: clean
 
-## Distribution
+
 #
 # Build a pre-compiled distribution that can be just installed on a similar
 # system

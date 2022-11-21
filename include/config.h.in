@@ -1,0 +1,11 @@
+// CMake based template for writing the configure.h header with all of the
+// configuration macros
+
+
+// Version
+#define TestBed_VERSION_MAJOR @TestBed_VERSION_MAJOR@
+#define TestBed_VERSION_MINOR @TestBed_VERSION_MINOR@
+
+// Options
+
+#cmakedefine THIS_DEBUG
