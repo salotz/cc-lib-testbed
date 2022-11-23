@@ -6,6 +6,9 @@
 #define TestBed_VERSION_MAJOR @TestBed_VERSION_MAJOR@
 #define TestBed_VERSION_MINOR @TestBed_VERSION_MINOR@
 
+// The build type
+#define BUILD_TYPE "@CMAKE_BUILD_TYPE@"
+
 // Options
 
-#cmakedefine THIS_DEBUG
+#cmakedefine THIS_LOGGING

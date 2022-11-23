@@ -55,14 +55,15 @@ configure:
 	cmake \
 	  -B _build \
 	  -S . \
-	  -G Ninja \
+	  -G 'Ninja' \
+	  --log-level=VERBOSE \
 	  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 	  -DCMAKE_BUILD_TYPE=Debug \
-	  -DTHIS_DEBUG=ON
+	  -DTHIS_LOGGING=ON
 .PHONY: configure
 
 test:
-	./_build/test-bed
+	./_build/src/test-bed
 .PHONY: test
 
 clean:

@@ -1,3 +1,5 @@
+// Public header for the test_bed.h library.
+
 #ifndef TEST_BED_H
 #define TEST_BED_H
 
